@@ -1,4 +1,5 @@
 import io.appium.java_client.AppiumBy;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -14,10 +15,10 @@ public class AlertViewTest extends IOSBaseTest {
     @Test
     void testClickOnClickCancelView() {
         driver.findElement(AppiumBy.accessibilityId("Alert Views")).click();
+
         driver.findElement(AppiumBy.accessibilityId("Confirm / Cancel")).click();
+        WebElement textView = driver.findElement(AppiumBy.iOSNsPredicateString("name BEGINSWITH[c] 'A message'"));
 
-        String text = driver.findElement(AppiumBy.iOSNsPredicateString("name BEGINSWITH[c] 'A message'")).getText();
-
-        Assert.assertEquals(text, "A message should be a short, complete sentence.");
+        Assert.assertEquals(textView.getText(), "A message should be a short, complete sentence.");
     }
 }
