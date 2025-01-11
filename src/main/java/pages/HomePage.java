@@ -14,7 +14,14 @@ public class HomePage {
     @iOSXCUITFindBy(accessibility = "Alert Views")
     private WebElement alertViewsItem;
 
+    @iOSXCUITFindBy(accessibility = "Steppers")
+    private WebElement steppersItem;
+
     public void openAlertViewsPage() {
         alertViewsItem.click();
+    }
+
+    public void openSteppersPage() {
+        steppersItem.click();
     }
 }
