@@ -1,24 +1,42 @@
-import io.appium.java_client.AppiumBy;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import pages.AlertViewPage;
+import pages.HomePage;
+
+import java.net.MalformedURLException;
 
 public class AlertViewTest extends IOSBaseTest {
+    private AlertViewPage alertViewPage;
+
+    @BeforeClass
+    @Override
+    public void setUp() throws MalformedURLException {
+        super.setUp();
+        alertViewPage = new AlertViewPage(driver);
+        new HomePage(driver).openAlertViewsPage();
+    }
+
+    @AfterClass
+    @Override
+    public void tearDown() {
+        alertViewPage = null;
+        super.tearDown();
+    }
+
     @Test
      void testClickOnAlertView() {
-        driver.findElement(AppiumBy.accessibilityId("Alert Views")).click();
-        driver.findElement(AppiumBy.iOSClassChain("**/XCUIElementTypeStaticText[`name == \"Text Entry\"`]")).click();
-        driver.findElement(AppiumBy.iOSClassChain("**/XCUIElementTypeTextField")).sendKeys("Hello World");
-        driver.findElement(AppiumBy.accessibilityId("OK")).click();
+        alertViewPage.setText("Hello World");
     }
 
     @Test
     void testClickOnClickCancelView() {
-        driver.findElement(AppiumBy.accessibilityId("Alert Views")).click();
+        alertViewPage.openConfirmationAlert();
 
-        driver.findElement(AppiumBy.accessibilityId("Confirm / Cancel")).click();
-        WebElement textView = driver.findElement(AppiumBy.iOSNsPredicateString("name BEGINSWITH[c] 'A message'"));
-
-        Assert.assertEquals(textView.getText(), "A message should be a short, complete sentence.");
+        Assert.assertEquals(
+            alertViewPage.getConfirmationText(),
+            "A message should be a short, complete sentence."
+        );
     }
 }
