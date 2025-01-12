@@ -5,6 +5,7 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import utils.IOSActions;
 
 public class SteppersPage {
@@ -21,11 +22,11 @@ public class SteppersPage {
     @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeStaticText[`name == \"10\"`]")
     private WebElement textView;
 
-    public void touchAndHoldIncrementButton() {
+    public void longPressIncrementButton() {
         iOSActions.touchAndHold(incrementButton, 5);
     }
 
-    public String getText() {
-        return textView.getText();
+    public void verifyText(String expected) {
+        Assert.assertEquals(textView.getText(), expected);
     }
 }

@@ -1,26 +1,20 @@
-import org.testng.Assert;
 import org.testng.annotations.*;
 import pages.AlertViewPage;
 import pages.HomePage;
 
 public class AlertViewTest extends IOSBaseTest {
-    private AlertViewPage alertViewPage;
+    private AlertViewPage page;
 
     @Test
      void testClickOnAlertView() {
-        alertViewPage = new HomePage(driver).openAlertViewsPage();
-        alertViewPage.setText("Hello World");
+        page = new HomePage(driver).openAlertViewsPage();
+        page.setText("Hello World");
     }
 
     @Test
     void testClickOnClickCancelView() {
-        alertViewPage = new HomePage(driver).openAlertViewsPage();
-
-        alertViewPage.openConfirmationAlert();
-
-        Assert.assertEquals(
-            alertViewPage.getConfirmationText(),
-            "A message should be a short, complete sentence."
-        );
+        page = new HomePage(driver).openAlertViewsPage();
+        page.openConfirmationAlert();
+        page.verifyConfirmationText("A message should be a short, complete sentence.");
     }
 }

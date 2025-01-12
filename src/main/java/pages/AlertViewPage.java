@@ -5,6 +5,7 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 public class AlertViewPage {
     public AlertViewPage(IOSDriver driver) {
@@ -36,7 +37,7 @@ public class AlertViewPage {
         confirmationAlert.click();
     }
 
-    public String getConfirmationText() {
-        return confirmationTextView.getText();
+    public void verifyConfirmationText(String expected) {
+        Assert.assertEquals(confirmationTextView.getText(), expected);
     }
 }
