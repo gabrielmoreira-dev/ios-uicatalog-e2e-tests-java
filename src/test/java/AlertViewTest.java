@@ -5,15 +5,23 @@ import pages.HomePage;
 public class AlertViewTest extends IOSBaseTest {
     private AlertViewPage page;
 
-    @Test
-     void testClickOnAlertView() {
+    @BeforeMethod
+    private void setUp() {
         page = new HomePage(driver).openAlertViewsPage();
+    }
+
+    @AfterMethod
+    private void tearDown() {
+        page = null;
+    }
+
+    @Test
+    void testClickOnAlertView() {
         page.setText("Hello World");
     }
 
     @Test
     void testClickOnClickCancelView() {
-        page = new HomePage(driver).openAlertViewsPage();
         page.openConfirmationAlert();
         page.verifyConfirmationText("A message should be a short, complete sentence.");
     }

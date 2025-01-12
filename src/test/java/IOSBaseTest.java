@@ -6,10 +6,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class IOSBaseTest {
-    public IOSDriver driver;
+    protected IOSDriver driver;
 
     @BeforeClass
-    public void setUp() throws MalformedURLException {
+    protected void setUpDriver() throws MalformedURLException {
         String serverURL = "http://127.0.0.1:4723";
 
         DesiredCapabilities dc = new DesiredCapabilities();
@@ -23,7 +23,7 @@ public class IOSBaseTest {
     }
 
     @AfterClass
-    public void tearDown() {
+    protected void dispose() {
         driver.quit();
     }
 }
