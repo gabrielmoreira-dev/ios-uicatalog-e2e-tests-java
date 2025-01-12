@@ -20,6 +20,9 @@ public class HomePage {
     @iOSXCUITFindBy(accessibility = "Steppers")
     private WebElement steppersItem;
 
+    @iOSXCUITFindBy(accessibility = "Picker View")
+    private WebElement pickerViewItem;
+
     public AlertViewPage openAlertViewsPage() {
         alertViewsItem.click();
         return new AlertViewPage(driver);
@@ -28,5 +31,10 @@ public class HomePage {
     public SteppersPage openSteppersPage() {
         steppersItem.click();
         return new SteppersPage(driver);
+    }
+
+    public PickerViewPage openPickerViewPage() {
+        pickerViewItem.click();
+        return new PickerViewPage(driver);
     }
 }
