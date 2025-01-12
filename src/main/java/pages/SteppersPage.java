@@ -21,7 +21,7 @@ public class SteppersPage {
     @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeStaticText[`name == \"10\"`]")
     private WebElement textView;
 
-    public void incrementValue() {
+    public void touchAndHoldIncrementButton() {
         iOSActions.touchAndHold(incrementButton, 5);
     }
 

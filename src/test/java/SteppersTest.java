@@ -6,10 +6,9 @@ import pages.SteppersPage;
 public class SteppersTest extends IOSBaseTest {
     @Test
     void testLongPress() {
-        SteppersPage steppersPage = new SteppersPage(driver);
-        new HomePage(driver).openSteppersPage();
+        SteppersPage steppersPage = new HomePage(driver).openSteppersPage();
 
-        steppersPage.incrementValue();
+        steppersPage.touchAndHoldIncrementButton();
 
         Assert.assertEquals(steppersPage.getText(), "10");
     }

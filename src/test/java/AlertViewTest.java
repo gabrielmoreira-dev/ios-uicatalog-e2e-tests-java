@@ -8,15 +8,13 @@ public class AlertViewTest extends IOSBaseTest {
 
     @Test
      void testClickOnAlertView() {
-        alertViewPage = new AlertViewPage(driver);
-        new HomePage(driver).openAlertViewsPage();
+        alertViewPage = new HomePage(driver).openAlertViewsPage();
         alertViewPage.setText("Hello World");
     }
 
     @Test
     void testClickOnClickCancelView() {
-        alertViewPage = new AlertViewPage(driver);
-        new HomePage(driver).openAlertViewsPage();
+        alertViewPage = new HomePage(driver).openAlertViewsPage();
 
         alertViewPage.openConfirmationAlert();
 

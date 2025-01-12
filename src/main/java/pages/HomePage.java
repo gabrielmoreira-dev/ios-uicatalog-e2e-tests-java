@@ -7,7 +7,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 public class HomePage {
+    private final IOSDriver driver;
+
     public HomePage(IOSDriver driver) {
+        this.driver = driver;
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
@@ -17,11 +20,13 @@ public class HomePage {
     @iOSXCUITFindBy(accessibility = "Steppers")
     private WebElement steppersItem;
 
-    public void openAlertViewsPage() {
+    public AlertViewPage openAlertViewsPage() {
         alertViewsItem.click();
+        return new AlertViewPage(driver);
     }
 
-    public void openSteppersPage() {
+    public SteppersPage openSteppersPage() {
         steppersItem.click();
+        return new SteppersPage(driver);
     }
 }
