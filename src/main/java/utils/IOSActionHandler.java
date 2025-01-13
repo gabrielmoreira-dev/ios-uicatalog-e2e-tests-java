@@ -7,10 +7,10 @@ import org.openqa.selenium.remote.RemoteWebElement;
 import java.util.HashMap;
 import java.util.Map;
 
-public class IOSActions {
+public class IOSActionHandler {
     private final IOSDriver driver;
 
-    public IOSActions(IOSDriver driver) {
+    public IOSActionHandler(IOSDriver driver) {
         this.driver = driver;
     }
 

@@ -1,17 +1,11 @@
 package pages;
 
 import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
-public class PickerViewPage {
-    public PickerViewPage(IOSDriver driver) {
-        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
-    }
-
+public class PickerViewPage extends BasePage {
     @iOSXCUITFindBy(accessibility = "Red color component value")
     private WebElement redPicker;
 
@@ -20,6 +14,10 @@ public class PickerViewPage {
 
     @iOSXCUITFindBy(accessibility = "Blue color component value")
     private WebElement bluePicker;
+
+    public PickerViewPage(IOSDriver driver) {
+        super(driver);
+    }
 
     public void setRGBColors(String red, String green, String blue) {
         redPicker.sendKeys(red);

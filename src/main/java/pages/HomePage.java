@@ -1,19 +1,10 @@
 package pages;
 
 import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 
-public class HomePage {
-    private final IOSDriver driver;
-
-    public HomePage(IOSDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
-    }
-
+public class HomePage extends BasePage {
     @iOSXCUITFindBy(accessibility = "Alert Views")
     private WebElement alertViewsItem;
 
@@ -22,6 +13,10 @@ public class HomePage {
 
     @iOSXCUITFindBy(accessibility = "Picker View")
     private WebElement pickerViewItem;
+
+    public HomePage(IOSDriver driver) {
+        super(driver);
+    }
 
     public AlertViewPage openAlertViewsPage() {
         alertViewsItem.click();
