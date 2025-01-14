@@ -1,4 +1,5 @@
 import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.*;
 
@@ -6,7 +7,14 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class IOSBaseTest {
+    private AppiumDriverLocalService service;
     protected IOSDriver driver;
+
+    @BeforeSuite
+    protected void startAppium() {
+        service = AppiumDriverLocalService.buildDefaultService();
+        service.start();
+    }
 
     @BeforeClass
     protected void setUpDriver() throws MalformedURLException {
@@ -25,5 +33,10 @@ public class IOSBaseTest {
     @AfterClass
     protected void dispose() {
         driver.quit();
+    }
+
+    @AfterSuite
+    protected void stopAppium() {
+        service.stop();
     }
 }
