@@ -1,6 +1,6 @@
 package pages;
 
-import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -15,7 +15,7 @@ public class PickerViewPage extends BasePage {
     @iOSXCUITFindBy(accessibility = "Blue color component value")
     private WebElement bluePicker;
 
-    public PickerViewPage(IOSDriver driver) {
+    public PickerViewPage(AppiumDriver driver) {
         super(driver);
     }
 

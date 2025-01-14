@@ -1,3 +1,4 @@
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -6,9 +7,9 @@ import org.testng.annotations.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class IOSBaseTest {
+public class BaseTest {
     private AppiumDriverLocalService service;
-    protected IOSDriver driver;
+    protected AppiumDriver driver;
 
     @BeforeSuite
     protected void startAppium() {

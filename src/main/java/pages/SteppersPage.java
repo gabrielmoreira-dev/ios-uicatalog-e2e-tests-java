@@ -1,6 +1,6 @@
 package pages;
 
-import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -12,7 +12,7 @@ public class SteppersPage extends BasePage {
     @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeStaticText[`name == \"10\"`]")
     private WebElement textView;
 
-    public SteppersPage(IOSDriver driver) {
+    public SteppersPage(AppiumDriver driver) {
         super(driver);
     }
 

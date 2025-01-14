@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.SteppersPage;
 
-public class SteppersTest extends IOSBaseTest {
+public class SteppersTest extends BaseTest {
     private SteppersPage sut;
 
     @BeforeMethod

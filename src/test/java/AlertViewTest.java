@@ -2,7 +2,7 @@ import org.testng.annotations.*;
 import pages.AlertViewPage;
 import pages.HomePage;
 
-public class AlertViewTest extends IOSBaseTest {
+public class AlertViewTest extends BaseTest {
     private AlertViewPage sut;
 
     @BeforeMethod

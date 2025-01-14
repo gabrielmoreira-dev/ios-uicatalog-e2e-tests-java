@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.PickerViewPage;
 
-public class PickerViewTest extends IOSBaseTest {
+public class PickerViewTest extends BaseTest {
     private PickerViewPage sut;
 
     @BeforeMethod

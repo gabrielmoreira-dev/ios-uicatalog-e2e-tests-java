@@ -1,6 +1,6 @@
 package utils;
 
-import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
 
@@ -8,9 +8,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class IOSActionHandler {
-    private final IOSDriver driver;
+    private final AppiumDriver driver;
 
-    public IOSActionHandler(IOSDriver driver) {
+    public IOSActionHandler(AppiumDriver driver) {
         this.driver = driver;
     }
 

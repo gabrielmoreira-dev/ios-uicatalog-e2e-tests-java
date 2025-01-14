@@ -1,6 +1,6 @@
 package pages;
 
-import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -21,7 +21,7 @@ public class AlertViewPage extends BasePage {
     @iOSXCUITFindBy(iOSNsPredicate = "name BEGINSWITH[c] 'A message'")
     private WebElement confirmationTextView;
 
-    public AlertViewPage(IOSDriver driver) {
+    public AlertViewPage(AppiumDriver driver) {
         super(driver);
     }
 
