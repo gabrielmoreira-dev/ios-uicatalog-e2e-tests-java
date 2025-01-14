@@ -5,21 +5,21 @@ import pages.HomePage;
 import pages.PickerViewPage;
 
 public class PickerViewTest extends IOSBaseTest {
-    private PickerViewPage page;
+    private PickerViewPage sut;
 
     @BeforeMethod
     private void setUp() {
-        page = new HomePage(driver).openPickerViewPage();
+        sut = new HomePage(driver).openPickerViewPage();
     }
 
     @AfterMethod
     private void tearDown() {
-        page = null;
+        sut = null;
     }
 
     @Test
     void testPickerView() {
-        page.setRGBColors("80", "220", "105");
-        page.verifyRGBColors(new String[] {"80", "220", "105"});
+        sut.setRGBColors("80", "220", "105");
+        sut.verifyRGBColors(new String[] {"80", "220", "105"});
     }
 }

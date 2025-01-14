@@ -18,7 +18,7 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
-    public AlertViewPage openAlertViewsPage() {
+    public AlertViewPage openAlertViewPage() {
         alertViewsItem.click();
         return new AlertViewPage(driver);
     }

@@ -16,11 +16,11 @@ public class SteppersPage extends BasePage {
         super(driver);
     }
 
-    public void longPressIncrementButton() {
+    public void holdIncrementButton() {
         touchAndHold(incrementButton, 5);
     }
 
-    public void verifyText(String expected) {
+    public void verifyValue(String expected) {
         Assert.assertEquals(textView.getText(), expected);
     }
 }

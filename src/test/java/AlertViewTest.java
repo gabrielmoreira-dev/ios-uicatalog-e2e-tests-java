@@ -3,26 +3,26 @@ import pages.AlertViewPage;
 import pages.HomePage;
 
 public class AlertViewTest extends IOSBaseTest {
-    private AlertViewPage page;
+    private AlertViewPage sut;
 
     @BeforeMethod
     private void setUp() {
-        page = new HomePage(driver).openAlertViewsPage();
+        sut = new HomePage(driver).openAlertViewPage();
     }
 
     @AfterMethod
     private void tearDown() {
-        page = null;
+        sut = null;
     }
 
     @Test
     void testClickOnAlertView() {
-        page.setText("Hello World");
+        sut.entryText("Hello World");
     }
 
     @Test
     void testClickOnClickCancelView() {
-        page.openConfirmationAlert();
-        page.verifyConfirmationText("A message should be a short, complete sentence.");
+        sut.openConfirmationAlert();
+        sut.verifyConfirmationText("A message should be a short, complete sentence.");
     }
 }

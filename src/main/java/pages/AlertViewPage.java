@@ -7,7 +7,7 @@ import org.testng.Assert;
 
 public class AlertViewPage extends BasePage {
     @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeStaticText[`name == \"Text Entry\"`]")
-    private WebElement textEntry;
+    private WebElement textEntryItem;
 
     @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeTextField")
     private WebElement textField;
@@ -16,7 +16,7 @@ public class AlertViewPage extends BasePage {
     private WebElement okButton;
 
     @iOSXCUITFindBy(accessibility = "Confirm / Cancel")
-    private WebElement confirmationAlert;
+    private WebElement confirmationItem;
 
     @iOSXCUITFindBy(iOSNsPredicate = "name BEGINSWITH[c] 'A message'")
     private WebElement confirmationTextView;
@@ -25,14 +25,14 @@ public class AlertViewPage extends BasePage {
         super(driver);
     }
 
-    public void setText(String value) {
-        textEntry.click();
+    public void entryText(String value) {
+        textEntryItem.click();
         textField.sendKeys(value);
         okButton.click();
     }
 
     public void openConfirmationAlert() {
-        confirmationAlert.click();
+        confirmationItem.click();
     }
 
     public void verifyConfirmationText(String expected) {

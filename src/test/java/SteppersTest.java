@@ -5,21 +5,21 @@ import pages.HomePage;
 import pages.SteppersPage;
 
 public class SteppersTest extends IOSBaseTest {
-    private SteppersPage page;
+    private SteppersPage sut;
 
     @BeforeMethod
     private void setUp() {
-        page = new HomePage(driver).openSteppersPage();
+        sut = new HomePage(driver).openSteppersPage();
     }
 
     @AfterMethod
     private void tearDown() {
-        page = null;
+        sut = null;
     }
 
     @Test
     void testLongPress() {
-        page.longPressIncrementButton();
-        page.verifyText("10");
+        sut.holdIncrementButton();
+        sut.verifyValue("10");
     }
 }
