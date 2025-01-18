@@ -1,7 +1,6 @@
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.HomePage;
 import pages.PickerViewPage;
 
 public class PickerViewTest extends BaseTest {
@@ -9,7 +8,7 @@ public class PickerViewTest extends BaseTest {
 
     @BeforeMethod
     private void setUp() {
-        sut = new HomePage(driver).openPickerViewPage();
+        sut = homePage.openPickerViewPage();
     }
 
     @AfterMethod
@@ -20,6 +19,6 @@ public class PickerViewTest extends BaseTest {
     @Test
     void testPickerView() {
         sut.setRGBColors("80", "220", "105");
-        sut.verifyRGBColors(new String[] {"80", "220", "105"});
+        sut.verifyRGBColors(new String[]{"80", "220", "105"});
     }
 }

@@ -1,7 +1,6 @@
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.HomePage;
 import pages.SteppersPage;
 
 public class SteppersTest extends BaseTest {
@@ -9,7 +8,7 @@ public class SteppersTest extends BaseTest {
 
     @BeforeMethod
     private void setUp() {
-        sut = new HomePage(driver).openSteppersPage();
+        sut = homePage.openSteppersPage();
     }
 
     @AfterMethod

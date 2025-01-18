@@ -2,14 +2,19 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.options.XCUITestOptions;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeSuite;
+import pages.HomePage;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 
 public class BaseTest {
-    private AppiumDriverLocalService service;
     protected AppiumDriver driver;
+    protected HomePage homePage;
+    private AppiumDriverLocalService service;
 
     @BeforeSuite
     protected void startAppium() {
@@ -34,6 +39,7 @@ public class BaseTest {
         options.setDeviceName("iPhone 15 Pro");
 
         driver = new IOSDriver(new URL(serverURL), options);
+        homePage = new HomePage(driver);
     }
 
     @AfterClass

@@ -21,6 +21,12 @@ public class AlertViewPage extends BasePage {
     @iOSXCUITFindBy(iOSNsPredicate = "name BEGINSWITH[c] 'A message'")
     private WebElement confirmationTextView;
 
+    @iOSXCUITFindBy(accessibility = "Cancel")
+    private WebElement cancelButton;
+
+    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeButton[`name == \"UIKitCatalog\"`]")
+    private WebElement backButton;
+
     public AlertViewPage(AppiumDriver driver) {
         super(driver);
     }
@@ -37,5 +43,13 @@ public class AlertViewPage extends BasePage {
 
     public void verifyConfirmationText(String expected) {
         Assert.assertEquals(confirmationTextView.getText(), expected);
+    }
+
+    public void dispose() {
+        try {
+            cancelButton.click();
+        } catch (Exception ignored) {
+        }
+        backButton.click();
     }
 }
