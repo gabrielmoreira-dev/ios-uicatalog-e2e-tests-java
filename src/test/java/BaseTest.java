@@ -6,12 +6,14 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
+import pages.HomePage;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 
 public class BaseTest {
     protected AppiumDriver driver;
+    protected HomePage homePage;
     private AppiumDriverLocalService service;
 
     @BeforeSuite
@@ -37,6 +39,7 @@ public class BaseTest {
         options.setDeviceName("iPhone 15 Pro");
 
         driver = new IOSDriver(new URL(serverURL), options);
+        homePage = new HomePage(driver);
     }
 
     @AfterClass
