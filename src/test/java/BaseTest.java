@@ -1,15 +1,23 @@
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.options.XCUITestOptions;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
+import org.apache.commons.io.FileUtils;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 import pages.HomePage;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.List;
 
 public class BaseTest {
     protected AppiumDriver driver;
@@ -45,5 +53,15 @@ public class BaseTest {
     @AfterClass
     protected void dispose() {
         driver.quit();
+    }
+
+    protected List<HashMap<String, String>> getJsonData(String file) throws IOException {
+        String jsonContent = FileUtils.readFileToString(
+                new File(System.getProperty("user.dir") + "//src//test//resources//" + file + ".json"),
+                StandardCharsets.UTF_8
+        );
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.readValue(jsonContent, new TypeReference<>() {
+        });
     }
 }
