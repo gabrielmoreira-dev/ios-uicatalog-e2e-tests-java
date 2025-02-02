@@ -12,6 +12,9 @@ public class SteppersPage extends BasePage {
     @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeStaticText[`name == \"10\"`]")
     private WebElement textView;
 
+    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeButton[`name == \"UIKitCatalog\"`]")
+    private WebElement backButton;
+
     public SteppersPage(AppiumDriver driver) {
         super(driver);
     }
@@ -22,5 +25,9 @@ public class SteppersPage extends BasePage {
 
     public void verifyValue(String expected) {
         Assert.assertEquals(textView.getText(), expected);
+    }
+
+    public void dispose() {
+        backButton.click();
     }
 }

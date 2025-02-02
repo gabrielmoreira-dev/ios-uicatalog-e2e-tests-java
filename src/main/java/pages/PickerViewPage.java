@@ -15,6 +15,9 @@ public class PickerViewPage extends BasePage {
     @iOSXCUITFindBy(accessibility = "Blue color component value")
     private WebElement bluePicker;
 
+    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeButton[`name == \"UIKitCatalog\"`]")
+    private WebElement backButton;
+
     public PickerViewPage(AppiumDriver driver) {
         super(driver);
     }
@@ -29,7 +32,11 @@ public class PickerViewPage extends BasePage {
         Assert.assertEquals(getRGBColors(), expected);
     }
 
+    public void dispose() {
+        backButton.click();
+    }
+
     private String[] getRGBColors() {
-        return new String[] { redPicker.getText(), greenPicker.getText(), bluePicker.getText() };
+        return new String[]{redPicker.getText(), greenPicker.getText(), bluePicker.getText()};
     }
 }

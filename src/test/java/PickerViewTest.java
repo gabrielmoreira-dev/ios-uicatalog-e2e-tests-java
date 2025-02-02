@@ -17,6 +17,7 @@ public class PickerViewTest extends BaseTest {
 
     @AfterMethod
     private void tearDown() {
+        sut.dispose();
         sut = null;
     }
 

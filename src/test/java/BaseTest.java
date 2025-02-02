@@ -1,16 +1,14 @@
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.ios.options.XCUITestOptions;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import org.apache.commons.io.FileUtils;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 import pages.HomePage;
-import utils.AppiumService;
+import utils.AppiumDriverWrapper;
+import utils.AppiumServiceWrapper;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,7 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class BaseTest {
-    private final AppiumDriverLocalService service = AppiumService.getService();
+    private final AppiumDriverLocalService service = AppiumServiceWrapper.getService();
     protected AppiumDriver driver;
     protected HomePage homePage;
 
@@ -30,14 +28,7 @@ public class BaseTest {
 
     @BeforeClass
     protected void setUpDriver() {
-        XCUITestOptions options = new XCUITestOptions();
-        options.setAutomationName("XCUITest");
-        options.setApp(System.getProperty("user.dir") + "/apps/UIKitCatalog.app");
-        options.setPlatformName("IOS");
-        options.setPlatformVersion("18.0");
-        options.setDeviceName("iPhone 15 Pro");
-
-        driver = new IOSDriver(service.getUrl(), options);
+        driver = AppiumDriverWrapper.getDriver(service.getUrl());
         homePage = new HomePage(driver);
     }
 
@@ -60,13 +51,9 @@ public class BaseTest {
         });
     }
 
-    @AfterClass
+    @AfterSuite
     protected void dispose() {
         driver.quit();
-    }
-
-    @AfterSuite
-    protected void stopAppium() {
         service.stop();
     }
 }

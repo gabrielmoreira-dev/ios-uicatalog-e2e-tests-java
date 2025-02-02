@@ -13,6 +13,7 @@ public class SteppersTest extends BaseTest {
 
     @AfterMethod
     private void tearDown() {
+        sut.dispose();
         sut = null;
     }
 
