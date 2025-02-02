@@ -55,6 +55,15 @@ public class BaseTest {
         driver.quit();
     }
 
+    protected Object[][] getData(String file) throws IOException {
+        List<HashMap<String, String>> data = getJsonData(file);
+        Object[][] object = new Object[data.size()][];
+        for (int i = 0; i < data.size(); i++) {
+            object[i] = new Object[]{data.get(i)};
+        }
+        return object;
+    }
+
     protected List<HashMap<String, String>> getJsonData(String file) throws IOException {
         String jsonContent = FileUtils.readFileToString(
                 new File(System.getProperty("user.dir") + "//src//test//resources//" + file + ".json"),

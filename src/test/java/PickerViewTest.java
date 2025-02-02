@@ -6,7 +6,6 @@ import pages.PickerViewPage;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 
 public class PickerViewTest extends BaseTest {
     private PickerViewPage sut;
@@ -23,17 +22,17 @@ public class PickerViewTest extends BaseTest {
 
     @Test(dataProvider = "getData")
     void testPickerView(HashMap<String, String> input) {
-        sut.setRGBColors(input.get("red"), input.get("green"), input.get("blue"));
-        sut.verifyRGBColors(new String[]{input.get("red"), input.get("green"), input.get("blue")});
+        final String red = input.get("red");
+        final String green = input.get("green");
+        final String blue = input.get("blue");
+
+        sut.setRGBColors(red, green, blue);
+
+        sut.verifyRGBColors(new String[]{red, green, blue});
     }
 
     @DataProvider
     private Object[][] getData() throws IOException {
-        List<HashMap<String, String>> data = getJsonData("picker_data");
-        Object[][] object = new Object[3][];
-        for (int i = 0; i < data.size(); i++) {
-            object[i] = new Object[]{data.get(i)};
-        }
-        return object;
+        return getData("picker_data");
     }
 }
