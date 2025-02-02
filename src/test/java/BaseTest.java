@@ -10,35 +10,26 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 import pages.HomePage;
+import utils.AppiumService;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 
 public class BaseTest {
+    private final AppiumDriverLocalService service = AppiumService.getService();
     protected AppiumDriver driver;
     protected HomePage homePage;
-    private AppiumDriverLocalService service;
 
     @BeforeSuite
     protected void startAppium() {
-        service = AppiumDriverLocalService.buildDefaultService();
         service.start();
     }
 
-    @AfterSuite
-    protected void stopAppium() {
-        service.stop();
-    }
-
     @BeforeClass
-    protected void setUpDriver() throws MalformedURLException {
-        String serverURL = "http://127.0.0.1:4723";
-
+    protected void setUpDriver() {
         XCUITestOptions options = new XCUITestOptions();
         options.setAutomationName("XCUITest");
         options.setApp(System.getProperty("user.dir") + "/apps/UIKitCatalog.app");
@@ -46,13 +37,8 @@ public class BaseTest {
         options.setPlatformVersion("18.0");
         options.setDeviceName("iPhone 15 Pro");
 
-        driver = new IOSDriver(new URL(serverURL), options);
+        driver = new IOSDriver(service.getUrl(), options);
         homePage = new HomePage(driver);
-    }
-
-    @AfterClass
-    protected void dispose() {
-        driver.quit();
     }
 
     protected Object[][] getData(String file) throws IOException {
@@ -72,5 +58,15 @@ public class BaseTest {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(jsonContent, new TypeReference<>() {
         });
+    }
+
+    @AfterClass
+    protected void dispose() {
+        driver.quit();
+    }
+
+    @AfterSuite
+    protected void stopAppium() {
+        service.stop();
     }
 }
